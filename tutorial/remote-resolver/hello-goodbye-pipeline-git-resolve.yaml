@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: hello-goodbye-git-resolve
+spec:
+  params:
+  - name: username
+    type: string
+  tasks:
+    - name: hello
+      taskRef:
+        resolver: git
+        params:
+        - name: url
+          value: "https://github.com/sukyoungjeong-furiosa/tekton-playground.git"
+        - name: revision
+          value: tutorial
+        - name: pathInRepo
+          value: tutorial/pipelines/goodbye-world.yaml
+      params:
+      - name: username
+        value: $(params.username)
+
