@@ -17,6 +17,12 @@
     ```
     kubectl apply -f https://storage.googleapis.com/tekton-releases/operator/latest/release.yaml
     ```
+
+   and optionally, the `tkn` cli tool:
+
+    ```
+    brew install tektoncd-cli
+    ```
     
 4. You may want to create a dedicated namespace
     
