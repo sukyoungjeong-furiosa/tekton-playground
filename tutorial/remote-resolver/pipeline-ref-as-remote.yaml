@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: hello-goodbye-run-from-git
+spec:
+  pipelineRef:
+    resolver: git
+    params:
+    - name: url
+      value: "https://github.com/sukyoungjeong-furiosa/tekton-playground.git"
+    - name: revision
+      value: tutorial
+    - name: pathInRepo
+      value: tutorial/remote-resolver/hello-goodbye-pipeline-git-resolve.yaml
+  params:
+  - name: username
+    value: "Git Resolver"

@@ -4,12 +4,12 @@ See [TEPS-0060](https://github.com/tektoncd/community/blob/main/teps/0060-remote
 
 Also, see [https://github.com/tektoncd/pipeline/blob/main/docs/git-resolver.md](https://github.com/tektoncd/pipeline/blob/main/docs/git-resolver.md).
 
-0. Requires the built-in remote resolvers, install as described in [here](https://github.com/tektoncd/pipeline/blob/main/docs/install.md#installation)
+0. Requires the built-in remote resolvers, install as described in [here](https://github.com/tektoncd/pipeline/blob/main/docs/install.md#installation).
 
     Also, check that `enable-git-resolver` feature flag is set to `true`.
 
     ```
-    kubectl get configmap resolvers-feature-flags -n tekton-pipelines-resolvers  -o yaml | grep enable-git-resolver
+    kubectl get configmap resolvers-feature-flags -n tekton-pipelines-resolvers -o yaml | grep enable-git-resolver
     ```
 
 1. Register the pipeline:
@@ -27,4 +27,10 @@ Also, see [https://github.com/tektoncd/pipeline/blob/main/docs/git-resolver.md](
     and watch it by
     ```
     kubectl logs --selector=tekton.dev/pipelineRun=hello-goodbye-run
+    ```
+
+3. Also, try referencing the pipeline itself using git resolver by running:
+
+    ```
+    kubectl apply -f pipeline-ref-as-remote.yaml
     ```
